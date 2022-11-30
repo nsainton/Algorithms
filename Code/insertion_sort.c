@@ -6,28 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 05:23:26 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/27 06:49:47 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/30 06:42:52 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-
-void	ft_print_tab(int *tab, size_t size)
-{
-	size_t	i;
-
-	if (tab == NULL || ! size)
-		return ;
-	i = 0;
-	printf("[");
-	while (i < size - 1)
-	{
-		printf("%d, ", *(tab + i));
-		i ++;
-	}
-	printf("%d]\n", *(tab + i));
-}
+#include "Utils/utils.h"
 
 void	ft_sort_tab(int *tab, size_t size)
 {
@@ -46,19 +29,21 @@ void	ft_sort_tab(int *tab, size_t size)
 		{
 			*(tab + j + 1) = *(tab + j);
 			j --;
-		//	ft_print_tab(tab, size);
-		//	sleep(1);
 		}
 		*(tab + j + 1) = tmp;
-		ft_print_tab(tab, size);
 		i ++;
 	}
 }
 
 int	main(void)
 {
-	int	tab[10] = {9, 8, 7, 5, 6, 4, 3, 1, 2, 0};
+	int		tab[10];
+	size_t	size;
 
-	ft_sort_tab(tab, 10);
+	size = sizeof tab / sizeof * tab;
+	ft_init_tab(tab, 21, size, 100);
+	ft_print_tab(tab, size);
+	ft_sort_tab(tab, size);
+	ft_print_tab(tab, size);
 	return (0);
 }

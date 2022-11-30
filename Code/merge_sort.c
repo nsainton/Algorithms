@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 04:07:10 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/30 06:11:51 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/30 06:34:14 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ static void	merge(int *tab, size_t start, size_t middle, size_t last)
 	if (init(&left, tab, sizes[0], start))
 		return ;
 	if (init(&right, tab, sizes[1], middle + 1))
-	{
-		free(left);
-		return ;
-	}
+		return (free(left));
 	indexes[0] = 0;
 	indexes[1] = 0;
 	while (start < last + 1)
@@ -81,7 +78,7 @@ int	main(void)
 	int		tab[10];
 	size_t	size;
 
-	size = sizeof tab / sizeof *tab;
+	size = sizeof tab / sizeof * tab;
 	ft_init_tab(tab, 200, size, 100);
 	ft_print_tab(tab, size);
 	merge_sort(tab, 0, size - 1);

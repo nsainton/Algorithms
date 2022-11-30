@@ -6,14 +6,14 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 05:41:34 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/28 22:37:24 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/30 06:33:19 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void	ft_print_memory(int *tab, size_t size)
+static void	ft_print_memory(int *tab, size_t size)
 {
 	size_t	i;
 
@@ -29,30 +29,30 @@ void	ft_print_memory(int *tab, size_t size)
 	printf("%d]\n", *(tab + i));
 }
 
-int	*ft_sum(int *A, int *B, size_t size)
+int	*ft_sum(int *tab_a, int *tab_b, size_t size)
 {
 	int		i;
-	int		*C;
+	int		*tab_c;
 	int		tmp;
 
-	if (A == NULL || B == NULL || ! size)
+	if (tab_a == NULL || tab_b == NULL || ! size)
 		return (NULL);
-	C = malloc(sizeof *C * (size + 1));
-	if (C == NULL)
+	tab_c = malloc(sizeof * tab_c * (size + 1));
+	if (tab_c == NULL)
 		return (NULL);
-	C[size] = 0;
+	tab_c[size] = 0;
 	i = (int)size - 1;
 	while (i > -1)
 	{
-		tmp = A[i] + B[i] + C[i + 1];
-		*(C + i) = tmp / 2;
-		*(C + i + 1) = tmp % 2;
-	//	printf("C[%d] : %d\nC[%d] : %d\n", i + 1, C[i + 1], i, C[i]);
+		tmp = tab_a[i] + tab_b[i] + tab_c[i + 1];
+		*(tab_c + i) = tmp / 2;
+		*(tab_c + i + 1) = tmp % 2;
 		i --;
 	}
-	return (C);
+	return (tab_c);
 }
 
+/*
 int	main(void)
 {
 	int		A[10] = {0, 1, 1, 0, 1, 1, 0, 1, 1, 0};
@@ -67,3 +67,4 @@ int	main(void)
 		free(C);
 	return (0);
 }
+*/

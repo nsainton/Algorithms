@@ -6,27 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 00:46:03 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/28 00:53:20 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/30 06:41:10 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-void	ft_print_tab(int *tab, size_t size)
-{
-	size_t	i;
-
-	if (tab == NULL || ! size)
-		return ;
-	printf("[");
-	i = 0;
-	while (i < size - 1)
-	{
-		printf("%d ,", *(tab + i));
-		i ++;
-	}
-	printf("%d]\n", *(tab + i));
-}
+#include "Utils/utils.h"
 
 void	ft_sort_tab(int *tab, size_t size)
 {
@@ -37,7 +21,6 @@ void	ft_sort_tab(int *tab, size_t size)
 	if (tab == NULL || ! size)
 		return ;
 	i = 1;
-	ft_print_tab(tab, size);
 	while (i < size)
 	{
 		j = i - 1;
@@ -48,15 +31,19 @@ void	ft_sort_tab(int *tab, size_t size)
 			j --;
 		}
 		*(tab + j + 1) = key;
-		ft_print_tab(tab, size);
 		i ++;
 	}
 }
 
 int	main(void)
 {
-	int	tab[10] = {31, 41, 59, 26, 41, 58, 12, 98, 29, 3};
+	int		tab[10];
+	size_t	size;
 
-	ft_sort_tab(tab, 10);
+	size = sizeof tab / sizeof * tab;
+	ft_init_tab(tab, 20, size, 100);
+	ft_print_tab(tab, size);
+	ft_sort_tab(tab, size);
+	ft_print_tab(tab, size);
 	return (0);
 }
