@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 04:07:10 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/30 06:34:14 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/01 00:26:59 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,4 @@ void	merge_sort(int *tab, size_t start, size_t end)
 	merge_sort(tab, start, middle);
 	merge_sort(tab, middle + 1, end);
 	merge(tab, start, middle, end);
-}
-
-int	main(void)
-{
-	int		tab[10];
-	size_t	size;
-
-	size = sizeof tab / sizeof * tab;
-	ft_init_tab(tab, 200, size, 100);
-	ft_print_tab(tab, size);
-	merge_sort(tab, 0, size - 1);
-	ft_print_tab(tab, size);
-	return (0);
 }
